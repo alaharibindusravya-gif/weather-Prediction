@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Prediction Result</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title mb-3">Prediction Result</h3>
+
+        {% if error %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% else %}
+          <div class="alert alert-success">
+            <h4 class="mb-0">Predicted Weather: <strong>{{ prediction }}</strong></h4>
+          </div>
+
+          <h6>Input values used:</h6>
+          <ul>
+            {% for k, v in inputs.items() %}
+              <li><strong>{{ k }}</strong>: {{ v }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <a href="{{ url_for('index') }}" class="btn btn-outline-primary mt-3">Predict again</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
